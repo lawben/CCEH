@@ -4,8 +4,7 @@
 #include <cstring>
 #include <cmath>
 #include <vector>
-#include "util/pair.h"
-#include "src/hash.h"
+#include "cceh/pair.h"
 
 constexpr size_t kSegmentBits = 8;
 constexpr size_t kMask = (1 << kSegmentBits)-1;
@@ -94,7 +93,7 @@ struct Directory {
   void LSBUpdate(int, int, int, int, Segment**);
 };
 
-class CCEH : public Hash {
+class CCEH {
   public:
     CCEH(void);
     CCEH(size_t);
@@ -109,7 +108,7 @@ class CCEH : public Hash {
     bool Recovery(void);
 
     void print_meta(void) {
-//      std::cout << dir->depth << "," << dir->capacity << "," << Capacity() << "," << Capacity()/Segment::kNumSlot << std::endl;
+      std::cout << dir->depth << "," << dir->capacity << "," << Capacity() << "," << Capacity()/Segment::kNumSlot << std::endl;
     }
 
     void* operator new(size_t size) {
